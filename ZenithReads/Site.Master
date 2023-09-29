@@ -1,0 +1,77 @@
+﻿<%--
+    ID      : 2007906
+    Author  : Zavier Jackson
+    Date    : 20/09/2023
+    Purpose : Enterprise Computing I Individual Assignment
+--%>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ZenithReads.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head runat="server">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%--
+        The Page.Title property is an ASP.NET property that gets or sets the title of the web page programmatically. It can be used to dynamically 
+        change the title based on the content or logic of the web page. For example, you can use Page.Title to display the name of a product 
+        or a news article that is loaded from a database.
+        The title element uses a server-side expression to display a fixed string "Zenith Reads - " followed by the value of the Page.Title 
+        property. This means that the title of the web page will depend on what the Page.Title property is set to in the
+        code-behind file or in the content page that uses this master page.
+    --%>
+        <title><%: Page.Title %> - Zenith Reads</title>
+    <%--
+        The asp:PlaceHolder element is a web/server control that is used as a container to store other
+        server controls or HTML elements that are dynamically added to the web page. The asp:PlaceHolder element does not 
+        produce any visible output and is used only as a placeholder for the content that will be rendered by the server 
+        controls inside it. For example, you can use the asp:PlaceHolder element to create a dynamic menu or a custom user control.
+        It is used here to render a script bundle that includes modernizr.js, a JavaScript library that detects browser features.
+        These script bundles are created by using the Scripts.Render method, which combines and minifies multiple script files
+        into a single file for better performance.
+    --%>
+        <asp:PlaceHolder runat="server">
+            <%: Scripts.Render("~/bundles/modernizr") %>
+        </asp:PlaceHolder>
+    <%--
+        The webopt:bundlereference element is another web control that references 
+        a CSS bundle that contains multiple stylesheets.
+    --%>
+        <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
+        <link rel="stylesheet" runat="server" href="Content/bootstrap.css" />
+        <script src="https://kit.fontawesome.com/b8c03eb683.js" crossorigin="anonymous"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="Favicon_Files/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="Favicon_Files/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="Favicon_Files/favicon-16x16.png">
+        <link rel="manifest" href="Favicon_Files/site.webmanifest">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+            <div class="container">        
+                <img runat="server" src="logo.png" width="170" alt="logo"/>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br />
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <footer>
+        <hr />
+            <%--<br />--%>
+            <p>&copy; <%: DateTime.Now.Year %> Zenith Reads. All Rights Reserved.</p>
+            <%--<br />--%>
+        </footer>
+        <asp:PlaceHolder runat="server">
+            <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+        </asp:PlaceHolder>
+    </body>
+</html>
